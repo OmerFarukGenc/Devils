@@ -2,5 +2,8 @@ html(lang='en')
     head
         include partials/bootstrap-script.pug
     body
-        h1 Devils Tower Fan Club
-        block content
+        .container-sm
+            .container-fluid
+                h1 Devils Tower Fan Club
+            include mixins/customNavbar.pug
+            block content

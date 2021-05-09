@@ -1,4 +1,8 @@
 extend ../main-layout.pug
 
 block content
-    .badge.bg-primary This is about page
+    .badge.bg-primary 
+        - if(locals.text == null)
+            ="DEFAULT_ABOUT_TEXT"
+        - else 
+            =text

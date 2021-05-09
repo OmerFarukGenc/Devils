@@ -11,4 +11,16 @@ app.set("view engine","pug")
 app.use(express.static(path.join(__dirname ,"/public")))
 app.use("/",mainRoute)
 
-app.listen(process.env.PORT || 3000)
+
+
+const server = app.listen(process.env.PORT || 3001)
+console.log("app listening on port: "+ 3001);
+
+process.on("SIGINT",() => {
+    console.info("SIGINT signal received");
+    console.log("Closing http server.");
+    server.close(() => {
+        console.log("SERVER CLOSED");
+    })
+
+})
