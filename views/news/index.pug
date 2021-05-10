@@ -1,10 +1,17 @@
 extends ../main-layout.pug
 
 block content 
+    -if(locals.errors != null)
+        ul.list-group
+            each e in errors
+                li.list-group-item.text-danger.border-0.p-0= e
+
     .text.h3 SUBMIT NEWS 
     form(action="/news/submit", method="POST")
-        label content 
-        input(type="text", name="text", value = "")
+        label header 
+        input(type="text", name="header",value="")
+        label content
+        input(type="text", name="content", value = "")
         input(type="submit",name="action",value="submit")
         input(type="submit",name="action",value="clear")
 
