@@ -1,0 +1,17 @@
+extends ../main-layout.pug
+
+block content 
+    .text.h3 SUBMIT NEWS 
+    form(action="/news/submit", method="POST")
+        label content 
+        input(type="text", name="text", value = "")
+        input(type="submit",name="action",value="submit")
+        input(type="submit",name="action",value="clear")
+
+    .text.h2 NEWS 
+    -if(locals.news != null)
+        ul
+            each n in news
+                li= n
+    - else
+        span="THERE IS NO NEWS"
