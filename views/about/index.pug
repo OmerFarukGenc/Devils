@@ -1,8 +1,5 @@
 extend ../main-layout.pug
 
 block content
-    .bg-primary.border.border.rounded-3.m-0 
-        - if(locals.text == null)
-            ="DEFAULT_ABOUT_TEXT"
-        - else 
-            =text
+    .m-1 
+        pre=text
