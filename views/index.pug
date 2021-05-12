@@ -17,4 +17,10 @@ block content
             span.visually-hidden Next
 
     hr
-    p index page
+
+    .container-fluid
+        .row
+            .col-md.m-0.border-end
+                p index page
+            .col-md-4.m-0.d-none.d-sm-block
+                include mixins/twitterTimeline.pug
