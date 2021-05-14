@@ -4,7 +4,7 @@ const fs = require("fs")
 const route = express.Router()
 
 route.get("/",(req,res) => {
-    const text = fs.readFileSync("./public/aboutText.html","utf8",(err,data) => {
+    const text = fs.readFileSync("./serverStorage/aboutText.html","utf8",(err,data) => {
         if(err){
             console.log("in err")
             console.log(err)

@@ -1,5 +1,6 @@
 extend main-layout.pug
 
+
 block content
     #carouselExampleControls.carousel.slide(data-bs-ride='carousel')
         .carousel-inner
@@ -23,4 +24,12 @@ block content
             .col-md.m-0.border-end
                 p index page
             .col-md-4.m-0.d-none.d-sm-block
-                include mixins/twitterTimeline.pug
+                .container-fluid
+                    .row 
+                        .col
+                            if locals.logged 
+                                include partials/userPanel.pug
+                            else 
+                                include partials/loginPanel.pug
+                        .col
+                            include mixins/twitterTimeline.pug
