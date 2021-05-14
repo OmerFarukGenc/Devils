@@ -1,0 +1,14 @@
+h1 Register Page
+
+
+-if(locals.message){
+    p=message
+    br
+-}
+
+form(action="/register/create" method="POST")
+    label username
+    input(type="text" name="username")
+    label password
+    input(type="password" name="password")
+    input(type="submit")

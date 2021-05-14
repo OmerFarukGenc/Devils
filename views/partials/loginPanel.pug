@@ -4,9 +4,11 @@
 form(action="/login/validate" method="POST")
     input(name="redirect" type="hidden" value=(locals.redirect != null)?locals.redirect:"/")
     label name 
-    input(type="text" name="name" value="")
+    input(type="text" name="username" value="")
     br
     label password 
     input(type="password" name="password" value = "" )
     br
-    input(type="submit")
+    button(type="submit") Login
+a(href="/register")
+    button Register
