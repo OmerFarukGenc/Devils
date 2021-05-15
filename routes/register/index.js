@@ -2,6 +2,7 @@ const dotenv = require("dotenv")
 dotenv.config()
 
 const jwt = require("jsonwebtoken")
+const bcrypt = require("bcryptjs")
 const express = require("express")
 const route = express.Router()
 const user = require("../../models/user")
@@ -35,7 +36,8 @@ route.post("/create", async(req,res) => {
 
 
     try{
-        const u = await (new user({username:username,password:password})).save()
+        const hashedPassword = await bcrypt.hash(password,parseInt(process.env.SALT_ROUND))
+        const u = await (new user({username:username,password:hashedPassword})).save()
         console.log("User " + u + " created")
         res.render("./register/index",{message:"User " + username + " created"})
         return

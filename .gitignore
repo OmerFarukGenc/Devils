@@ -2,3 +2,4 @@ node_modules
 localData
 .env
 .vscode
+test.js
