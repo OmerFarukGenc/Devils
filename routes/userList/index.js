@@ -4,9 +4,14 @@ const user = require("../../models/user")
 
 route.get("/",async(req,res) => {
     try{
-        const users = await user.find({}).exec()
-        res.render("./userList/index",{users:users})
-        return
+        if(req.auth && req.role == "admin"){
+            const users = await user.find({}).exec()
+            res.render("./userList/index",{users:users})
+            return
+        }else{
+            res.status(403)
+            return
+        }
     }catch(err){
         console.log(err)
         res.redirect("/errorPlaceholder")

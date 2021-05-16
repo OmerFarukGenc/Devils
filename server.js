@@ -12,6 +12,8 @@ const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 const authenticator = require("./middlewares/authenticator")
 
+const init = require("./initializers/mainInitializer")
+
 mongoose.connect(process.env.DATABASE_URL,{useNewUrlParser : true})
 const db = mongoose.connection
 db.on("error", error => console.error(error))
@@ -30,6 +32,8 @@ app.use(express.static(path.join(__dirname ,"/public")))
 app.use(authenticator)
 
 app.use("/",mainRoute)
+
+init()
 
 app.listen(process.env.PORT || port)
 
