@@ -21,7 +21,7 @@ route.post("/create", async(req,res) => {
     const password = req.body.password
     var users = null
     try{
-        users = await user.find({username:username,password:password}).exec()
+        users = await user.find({username:username}).exec()
     }catch(err){
         console.log(err)
         res.render("./login/register",{message:"Database error occured"})

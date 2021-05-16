@@ -27,7 +27,7 @@ route.post("/validate",async (req,res) => {
 
             if(result.length != 1){
                 res.render("./login/index",{message:"Invalid username/password"})
-            return
+                return
             }
 
             const compare = await bcrypt.compare(password,result[0].password);
