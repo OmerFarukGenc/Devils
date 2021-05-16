@@ -1,11 +1,6 @@
 extends ../main-layout.pug
 
-block content 
-    -if(locals.errors != null)
-        ul.list-group
-            each e in errors
-                li.list-group-item.text-danger.border-0.p-0= e
-
+mixin submit
     .text.h3 SUBMIT NEWS 
     form(action="/news/submit", method="POST")
         label header 
@@ -14,6 +9,15 @@ block content
         input(type="text", name="content", value = "")
         input(type="submit",name="action",value="submit")
         input(type="submit",name="action",value="clear")
+
+block content 
+    -if(locals.errors != null)
+        ul.list-group
+            each e in errors
+                li.list-group-item.text-danger.border-0.p-0= e
+
+    if locals.role == "admin"
+        +submit 
 
     .text.h2 NEWS 
     -if(locals.news != null)

@@ -24,7 +24,7 @@ const getNews = async (searchParams = {}) => {
 route.get("/",async (req,res) => {
     try{
         const n = await getNews()
-        renderNewsPage(res,{news:n}) 
+        renderNewsPage(res,{news:n,role:req.role}) 
         return
     }catch(err){
         console.log(err)
@@ -34,6 +34,11 @@ route.get("/",async (req,res) => {
 });
 
 route.post("/submit",async (req,res) => {
+    if(req.role != "admin"){
+        renderNewsPage(res,{errors: ["Unauthorized request"]})
+        return
+    }
+
     let n = null
     try{
         n = await getNews()
